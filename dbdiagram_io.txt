@@ -34,7 +34,7 @@ load_date VARCHAR}
 
 TABLE order_reviews{
 review_id VARCHAR [pk]
-order_id VARCHAR 
+order_id VARCHAR [pk]
 review_score BIGINT
 review_comment_title VARCHAR
 review_comment_message VARCHAR
