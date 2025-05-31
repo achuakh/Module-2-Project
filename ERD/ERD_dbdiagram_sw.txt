@@ -1,3 +1,5 @@
+--dbdiagram_io
+
 TABLE customers{
 customer_id VARCHAR [pk]
 customer_unique_id VARCHAR
@@ -9,7 +11,7 @@ load_date VARCHAR}
 TABLE geolocation{
 geolocation_zip_code_prefix VARCHAR 
 geolocation_lat DOUBLE
-geolocation_lng DOUBLE
+geolocation_lng DOUBLE`  
 geolocation_city VARCHAR
 geolocation_state VARCHAR
 load_date VARCHAR}
