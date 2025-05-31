@@ -1,5 +1,3 @@
---dbdiagram_io
-
 TABLE customers{
 customer_id VARCHAR [pk]
 customer_unique_id VARCHAR
@@ -11,7 +9,7 @@ load_date VARCHAR}
 TABLE geolocation{
 geolocation_zip_code_prefix VARCHAR 
 geolocation_lat DOUBLE
-geolocation_lng DOUBLE`  
+geolocation_lng DOUBLE
 geolocation_city VARCHAR
 geolocation_state VARCHAR
 load_date VARCHAR}
@@ -79,16 +77,16 @@ seller_city VARCHAR
 seller_state VARCHAR
 load_date VARCHAR}
 
-Ref: "customers"."customer_id" > "orders"."customer_id"
+Ref: "customers"."customer_id" < "orders"."customer_id"
 
-Ref: "orders"."order_id" < "order_payments"."order_id"
+Ref: "orders"."order_id" > "order_payments"."order_id"
 
-Ref: "order_items"."order_id" > "orders"."order_id"
+Ref: "order_items"."order_id" < "orders"."order_id"
 
-Ref: "products"."product_id" > "order_items"."product_id"
+Ref: "products"."product_id" < "order_items"."product_id"
 
-Ref: "products"."product_category_name" < "product_category_name_translation"."product_category_name"
+Ref: "products"."product_category_name" > "product_category_name_translation"."product_category_name"
 
-Ref: "sellers"."seller_id" > "order_items"."seller_id"
+Ref: "sellers"."seller_id" < "order_items"."seller_id"
 
-Ref: "orders"."order_id" < "order_reviews"."order_id"
+Ref: "orders"."order_id" > "order_reviews"."order_id"
