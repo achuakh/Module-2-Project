@@ -1,0 +1,98 @@
+// Module 2 Assignment Project
+// Brazilian E-Commerce Public Dataset by Olist
+// Entity Relationship Diagram
+
+table customers {
+  customer_id varchar [pk]
+  customer_unique_id varchar
+  customer_zip_code_prefix varchar
+  customer_city varchar
+  customer_state varchar
+}
+
+table orders {
+  order_id varchar [pk]
+  customer_id varchar
+  order_status varchar
+  order_processing_timestamp datetime
+  order_approved_at datetime
+  order_delivered_carrier_date datetime
+  order_delivered_customer_date datetime
+  order_estimated_delivery_date datetime
+}
+
+table order_items {
+  order_id varchar
+  order_item_id int
+  product_id varchar
+  seller_id varchar
+  shipping_limit_date datetime
+  price double
+  freight_value double
+}
+
+table order_payments {
+  order_id varchar
+  payment_sequential int
+  payment_type varchar
+  payment_installations int
+  payment_value double
+}
+
+table order_reviews {
+  review_id varchar [pk]
+  order_id varchar
+  review_score int
+  review_comment_title varchar
+  review_comment_mesage varchar
+  review_creation_date datetime
+  review_answer_timestamp datetime
+}
+
+table products {
+  product_id varchar [pk]
+  product_category_name varchar
+  product_name_length int
+  product_description_length int
+  product_photos_qty int
+  product_weight_g int
+  product_length_cm int
+  product_height_cm int
+  product_width_cm int
+}
+
+table category_name {
+  product_category_name varchar
+  product_category_name_english varchar
+}
+
+table sellers {
+  seller_id varchar [pk]
+  seller_zip_code_prefix varchar
+  seller_city varchar
+  seller_state varchar
+}
+
+table geolocation {
+  geolocation_zip_code_prefix varchar
+  geolocation_lat double
+  geolocation_lng double
+  geolocation_city varchar
+  geolocation_state varchar
+}
+
+Ref: customers.customer_id < orders.customer_id   // one to many
+Ref: orders.order_id < order_items.order_id       // one to many
+Ref: order_items.product_id > products.product_id // many to one
+Ref: orders.order_id < order_payments.order_id    // one to many
+Ref: order_items.seller_id > sellers.seller_id    // many to one
+Ref: products.product_category_name > category_name.product_category_name // many to one
+Ref: orders.order_id - order_reviews.order_id     // one to one
+Ref: customers.customer_zip_code_prefix > geolocation.geolocation_zip_code_prefix // many to one
+Ref: sellers.seller_zip_code_prefix > geolocation.geolocation_zip_code_prefix // many to one
+
+// Note:
+// 1. In the customers table, the customer_city and customer_state fields are not required, 
+//    as this information can be referenced using the geolocation_zip_code_prefix.
+// 2. In the sellers table, the seller_city and seller_state fields are not required, 
+//    as this information can be referenced using the geolocation_zip_code_prefix.
