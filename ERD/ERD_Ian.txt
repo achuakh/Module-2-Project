@@ -1,0 +1,100 @@
+Table Geo {
+    geolocation_zip_code_prefix int [pk]  
+    geolocation_lat float
+    geolocation_lng float
+    geolocation_city varchar
+    geolocation_state varchar
+}
+
+Table Reviews {
+review_id varchar [pk]
+order_id int
+review_score int
+review_comment_title varchar
+review_comment_message Varchar
+review_creation_date Varchar
+review_answer_timestamp Varchar
+}
+
+Table Customer {
+customer_id varchar [pk]
+customer_unique_id varchar
+customer_zip_code_prefix int
+customer_city varchar
+customer_state varchar
+}
+
+Table Items {
+order_id varchar [pk]
+order_item_id varchar
+product_id varchar 
+seller_id varchar 
+shipping_limit_date varchar
+price float
+freight_value float
+}
+
+Table Payments {
+order_id varchar [pk]
+payment_sequential int 
+payment_type varchar 
+payment_installments int  
+payment_value float
+}
+
+Table Orders {
+order_id varchar [pk]
+customer_id varchar
+order_status varchar
+order_purchase_timestamp varchar
+order_approved_at varchar
+order_delivered_carrier_date varchar
+order_delivered_customer_date varchar
+order_estimated_delivery_date varchar
+}
+
+Table Products {
+product_id varchar [pk]
+product_category_name varchar
+product_name_lenght float
+product_description_lenght float
+product_photos_qty float
+product_weight_g float
+product_length_cm float
+product_height_cm float
+product_width_cm float
+}
+
+Table sellers {
+seller_id varchar  [pk]
+seller_zip_code_prefix int
+seller_city varchar
+seller_state varchar
+}
+
+Table Category {
+product_category_name varchar [pk]
+product_category_name_english varchar
+}
+
+
+
+Ref: "Items"."product_id" - "Products"."product_id" //one to one
+
+Ref: "Customer"."customer_id" < "Orders"."customer_id" // one to many
+
+Ref: "Reviews"."order_id" > "Orders"."order_id" // many to one
+
+Ref: "Payments"."order_id" > "Orders"."order_id" // many to one
+
+Ref: "Items"."seller_id" < "sellers"."seller_id" // one to many
+
+Ref: "Customer"."customer_zip_code_prefix" - "Geo"."geolocation_zip_code_prefix" // one to one 
+
+Ref: "Category"."product_category_name" - "Products"."product_category_name"
+// one to one
+
+Ref: "Orders"."order_id" < "Items"."order_id" //one to many
+
+Ref: "Geo"."geolocation_zip_code_prefix" - "sellers"."seller_zip_code_prefix" // one to one
+
