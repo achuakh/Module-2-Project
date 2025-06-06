@@ -1,0 +1,92 @@
+TABLE DIM_CUSTOMERS{
+customer_sid VARCHAR [pk]
+customer_unique_id VARCHAR
+customer_zip_code_prefix VARCHAR
+customer_city VARCHAR
+customer_state VARCHAR
+load_date VARCHAR}
+
+
+TABLE DIM_GEOLOCATION{
+geolocation_zip_code_prefix VARCHAR
+geolocation_lat INTEGER
+geolocation_lng INTEGER
+geolocation_city VARCHAR
+geolocation_state VARCHAR}
+
+
+TABLE DIM_ITEMS{
+item_sid VARCHAR [pk]
+order_item_id DECIMAL(18,6)
+product_id VARCHAR
+seller_id VARCHAR
+shipping_limit_date TIMESTAMP
+price DECIMAL(18,6)
+freight_value DECIMAL(18,6)
+product_category_name VARCHAR
+product_category_name_english VARCHAR
+product_name_length DECIMAL(18,6)
+product_description_length DECIMAL(18,6)
+product_photos_qty DECIMAL(18,6)
+product_weight_g DECIMAL(18,6)
+product_length_cm DECIMAL(18,6)
+product_height_cm DECIMAL(18,6)
+product_width_cm DECIMAL(18,6)
+seller_zip_code_prefix VARCHAR
+seller_city VARCHAR
+seller_state VARCHAR}
+
+
+TABLE DIM_PAYMENTS{
+payment_sid VARCHAR [pk]
+payment_sequential DECIMAL(18,6) [pk]
+payment_type VARCHAR
+payment_installments DECIMAL(18,6)
+payment_value DECIMAL(18,6)
+load_date VARCHAR}
+
+
+TABLE DIM_REVIEWS{
+review_sid VARCHAR [pk]
+review_id VARCHAR 
+review_score DECIMAL(18,6)
+review_comment_title VARCHAR
+review_comment_message VARCHAR
+review_creation_date TIMESTAMP
+review_answer_timestamp TIMESTAMP
+load_date VARCHAR}
+
+
+TABLE FCT_ORDERS{
+payment_sid VARCHAR
+review_sid VARCHAR
+item_sid VARCHAR
+customer_sid VARCHAR
+order_status VARCHAR
+order_purchase_timestamp TIMESTAMP
+order_approved_at TIMESTAMP
+order_delivered_carrier_date TIMESTAMP
+order_delivered_customer_date TIMESTAMP
+order_estimated_delivery_date TIMESTAMP}
+
+TABLE DIM_DATE{
+date_SID INTEGER
+full_date DATE
+year INTEGER
+month INTEGER
+day INTEGER
+quarter INTEGER
+week INTEGER
+day_of_week INTEGER
+day_name VARCHAR
+month_name VARCHAR
+year_month VARCHAR
+year_quarter VARCHAR}
+
+Ref: "DIM_CUSTOMERS"."customer_sid" < "FCT_ORDERS"."customer_sid"
+
+Ref: "DIM_ITEMS"."item_sid" < "FCT_ORDERS"."item_sid"
+
+Ref: "DIM_PAYMENTS"."payment_sid" < "FCT_ORDERS"."payment_sid"
+
+Ref: "DIM_REVIEWS"."review_sid" < "FCT_ORDERS"."review_sid"
