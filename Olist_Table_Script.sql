@@ -53,7 +53,7 @@ SELECT *,
 strftime('%Y-%m-%d %I:%M:%S %p', CAST(NOW() AS TIMESTAMP)) AS load_date
 FROM read_csv_auto('/home/swlai/NTU_DSAI/Project/Olist/product_category_name_translation.csv');
 
-CREATE TABLE DIM_ITEMS AS 
+CREATE TABLE DIM_ORDER_ITEMS AS 
 SELECT  
     I.order_id,
     I.order_item_id,
@@ -64,8 +64,8 @@ SELECT
     I.freight_value,
     P.product_category_name,
     C.product_category_name_english,
-    P.product_name_length,
-    P.product_description_length,
+    P.product_name_lenght,
+    P.product_description_lenght,
     P.product_photos_qty,
     P.product_weight_g,
     P.product_length_cm,
@@ -78,11 +78,17 @@ FROM OLIST.TEMP_ORDER_ITEMS I
 LEFT JOIN OLIST.TEMP_PRODUCTS P ON I.product_id = P.product_id
 LEFT JOIN OLIST.TEMP_PRODUCT_CATEGORY_NAME_TRANSLATION C ON P.product_category_name = C.product_category_name
 LEFT JOIN OLIST.TEMP_SELLERS S ON I.seller_id = S.seller_id;
-
-DROP TABLE IF EXISTS OLIST.TEMP_GEOLOCATION; 
+ 
 DROP TABLE IF EXISTS OLIST.TEMP_ORDER_ITEMS;
 DROP TABLE IF EXISTS OLIST.TEMP_PRODUCT;
 DROP TABLE IF EXISTS OLIST.TEMP_PRODUCT_CATEGORY_NAME_TRANSLATION;
 DROP TABLE IF EXISTS OLIST.TEMP_SELLERS;
+
+ALTER TABLE DIM_ORDER_ITEMS
+RENAME COLUMN product_name_lenght TO product_name_length ;
+
+ALTER TABLE DIM_ORDER_ITEMS
+RENAME COLUMN product_description_lenght TO product_description_length ;
+
 
 
