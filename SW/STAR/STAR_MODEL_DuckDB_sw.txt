@@ -48,6 +48,8 @@ SELECT *,
 strftime('%Y-%m-%d %I:%M:%S %p', CAST(NOW() AS TIMESTAMP)) AS load_date
 FROM read_csv_auto('/home/swlai/NTU_DSAI/Project/Olist/product_category_name_translation.csv');
 
+
+
 CREATE TABLE DIM_ITEMS AS 
 SELECT  
     I.order_id,
@@ -74,31 +76,6 @@ LEFT JOIN OLIST.TEMP_PRODUCTS P ON I.product_id = P.product_id
 LEFT JOIN OLIST.TEMP_PRODUCT_CATEGORY_NAME_TRANSLATION C ON P.product_category_name = C.product_category_name
 LEFT JOIN OLIST.TEMP_SELLERS S ON I.seller_id = S.seller_id;
 
-CREATE TABLE OLIST.TEMP_ORDERS AS
-SELECT *, 
-strftime('%Y-%m-%d %I:%M:%S %p', CAST(NOW() AS TIMESTAMP)) AS load_date
-FROM read_csv_auto('/home/swlai/NTU_DSAI/Project/Olist/olist_orders_dataset.csv');
-
-CREATE TABLE FCT_ORDERS AS 
-SELECT 
-order_id AS payment_sid, 
-order_id AS review_sid, 
-order_id AS item_sid, 
-customer_id AS customer_sid, 
-order_status, 
-order_purchase_timestamp, 
-order_approved_at, 
-order_delivered_carrier_date, 
-order_delivered_customer_date, 
-order_estimated_delivery_date
-FROM OLIST.TEMP_ORDERS ; 
-
-DROP TABLE IF EXISTS OLIST.TEMP_GEOLOCATION; 
-DROP TABLE IF EXISTS OLIST.TEMP_ORDER_ITEMS;
-DROP TABLE IF EXISTS OLIST.TEMP_PRODUCTs;
-DROP TABLE IF EXISTS OLIST.TEMP_PRODUCT_CATEGORY_NAME_TRANSLATION;
-DROP TABLE IF EXISTS OLIST.TEMP_SELLERS;
-DROP TABLE IF EXISTS OLIST.TEMP_ORDERS;
 
 ALTER TABLE DIM_CUSTOMERS
 RENAME COLUMN customer_id TO customer_sid ;
@@ -111,6 +88,40 @@ RENAME COLUMN order_id TO review_sid ;
 
 ALTER TABLE DIM_ITEMS
 RENAME COLUMN order_id TO item_sid ;
+
+CREATE TABLE OLIST.TEMP_ORDERS AS
+SELECT *, 
+strftime('%Y-%m-%d %I:%M:%S %p', CAST(NOW() AS TIMESTAMP)) AS load_date
+FROM read_csv_auto('/home/swlai/NTU_DSAI/Project/Olist/olist_orders_dataset.csv');
+
+
+CREATE TABLE OLIST.FCT_ORDERS AS 
+SELECT 
+    O.order_id AS payment_sid, 
+    O.order_id AS review_sid, 
+    O.order_id AS item_sid, 
+    O.customer_id AS customer_sid, 
+    O.order_status, 
+    O.order_purchase_timestamp, 
+    O.order_approved_at, 
+    O.order_delivered_carrier_date, 
+    O.order_delivered_customer_date, 
+    O.order_estimated_delivery_date,
+    COALESCE(P.TOTAL_PAYMENT, 0) AS TOTAL_PAYMENT
+FROM OLIST.TEMP_ORDERS O
+LEFT JOIN (
+    SELECT PAYMENT_SID, SUM(PAYMENT_VALUE) AS TOTAL_PAYMENT
+    FROM DIM_PAYMENTS
+    GROUP BY PAYMENT_SID
+) P ON O.order_id = P.PAYMENT_SID;
+
+
+DROP TABLE IF EXISTS OLIST.TEMP_GEOLOCATION; 
+DROP TABLE IF EXISTS OLIST.TEMP_ORDER_ITEMS;
+DROP TABLE IF EXISTS OLIST.TEMP_PRODUCTs;
+DROP TABLE IF EXISTS OLIST.TEMP_PRODUCT_CATEGORY_NAME_TRANSLATION;
+DROP TABLE IF EXISTS OLIST.TEMP_SELLERS;
+DROP TABLE IF EXISTS OLIST.TEMP_ORDERS;
 
 
 CREATE TABLE DIM_DATE AS
@@ -135,4 +146,7 @@ SELECT
     strftime('%Y-%m', date_value) AS year_month,
     CONCAT(strftime('%Y', date_value), '-Q', EXTRACT(QUARTER FROM date_value)) AS year_quarter
 FROM date_series; 
+
+
+
 
