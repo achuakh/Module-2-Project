@@ -1,0 +1,345 @@
+{
+  "success": false,
+  "results": [
+    {
+      "success": false,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "olist_geolocation_dataset-olist_geolocation_dataset_files",
+          "column": "geolocation_lat",
+          "min_value": -35.0,
+          "max_value": 5.0
+        },
+        "meta": {},
+        "id": "e9b3e23d-caa9-4b75-89bb-bc88ebaf673c"
+      },
+      "result": {
+        "element_count": 1000163,
+        "unexpected_count": 29,
+        "unexpected_percent": 0.002899527377037543,
+        "partial_unexpected_list": [
+          28.008978338034268,
+          41.61405150610495,
+          42.43928591592116,
+          38.38167205114709,
+          43.68496096631822,
+          29.40925222930908,
+          21.65754744931478,
+          25.995202881053302,
+          25.995244980240106,
+          38.3239386880374,
+          38.99196259838999,
+          38.26820516582393,
+          45.06593318269697,
+          41.38532754845633,
+          41.14620290949943,
+          42.16680464053045,
+          42.16725082536653,
+          42.16725082536653,
+          42.16725082536653,
+          38.71312760878105
+        ],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.002899527377037543,
+        "unexpected_percent_nonmissing": 0.002899527377037543,
+        "partial_unexpected_counts": [
+          {
+            "value": 42.16725082536653,
+            "count": 3
+          },
+          {
+            "value": 21.65754744931478,
+            "count": 1
+          },
+          {
+            "value": 25.995202881053302,
+            "count": 1
+          },
+          {
+            "value": 25.995244980240106,
+            "count": 1
+          },
+          {
+            "value": 28.008978338034268,
+            "count": 1
+          },
+          {
+            "value": 29.40925222930908,
+            "count": 1
+          },
+          {
+            "value": 38.26820516582393,
+            "count": 1
+          },
+          {
+            "value": 38.3239386880374,
+            "count": 1
+          },
+          {
+            "value": 38.38167205114709,
+            "count": 1
+          },
+          {
+            "value": 38.71312760878105,
+            "count": 1
+          },
+          {
+            "value": 38.99196259838999,
+            "count": 1
+          },
+          {
+            "value": 41.14620290949943,
+            "count": 1
+          },
+          {
+            "value": 41.38532754845633,
+            "count": 1
+          },
+          {
+            "value": 41.61405150610495,
+            "count": 1
+          },
+          {
+            "value": 42.16680464053045,
+            "count": 1
+          },
+          {
+            "value": 42.43928591592116,
+            "count": 1
+          },
+          {
+            "value": 43.68496096631822,
+            "count": 1
+          },
+          {
+            "value": 45.06593318269697,
+            "count": 1
+          }
+        ],
+        "partial_unexpected_index_list": [
+          387565,
+          513631,
+          513754,
+          514429,
+          516682,
+          538512,
+          538557,
+          585242,
+          585260,
+          695377,
+          697048,
+          698466,
+          727755,
+          732362,
+          769333,
+          769351,
+          769391,
+          769436,
+          769489,
+          769924
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "olist_geolocation_dataset-olist_geolocation_dataset_files",
+          "column": "geolocation_lng",
+          "min_value": -75.0,
+          "max_value": -35.0
+        },
+        "meta": {},
+        "id": "02b1d31d-5750-40b9-a0ea-bbd81406bcc6"
+      },
+      "result": {
+        "element_count": 1000163,
+        "unexpected_count": 11682,
+        "unexpected_percent": 1.1680096144328473,
+        "partial_unexpected_list": [
+          -15.536867177679133,
+          -34.893332999999984,
+          -8.411675312504059,
+          -34.88038696915495,
+          -34.877599728507576,
+          -34.88758550124255,
+          -34.883536652201705,
+          13.82021409761152,
+          -6.328200272094753,
+          -7.411080413859842,
+          -98.48412074808029,
+          -101.46676644931476,
+          -98.07854439291536,
+          -98.0785330980116,
+          -34.8503519505696,
+          -34.9159460114293,
+          -6.775035344018704,
+          -4.947823288649088,
+          -7.803885844521256,
+          -34.88239283971952
+        ],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 1.1680096144328473,
+        "unexpected_percent_nonmissing": 1.1680096144328473,
+        "partial_unexpected_counts": [
+          {
+            "value": -101.46676644931476,
+            "count": 1
+          },
+          {
+            "value": -98.48412074808029,
+            "count": 1
+          },
+          {
+            "value": -98.07854439291536,
+            "count": 1
+          },
+          {
+            "value": -98.0785330980116,
+            "count": 1
+          },
+          {
+            "value": -34.9159460114293,
+            "count": 1
+          },
+          {
+            "value": -34.893332999999984,
+            "count": 1
+          },
+          {
+            "value": -34.88758550124255,
+            "count": 1
+          },
+          {
+            "value": -34.883536652201705,
+            "count": 1
+          },
+          {
+            "value": -34.88239283971952,
+            "count": 1
+          },
+          {
+            "value": -34.88038696915495,
+            "count": 1
+          },
+          {
+            "value": -34.877599728507576,
+            "count": 1
+          },
+          {
+            "value": -34.8503519505696,
+            "count": 1
+          },
+          {
+            "value": -15.536867177679133,
+            "count": 1
+          },
+          {
+            "value": -8.411675312504059,
+            "count": 1
+          },
+          {
+            "value": -7.803885844521256,
+            "count": 1
+          },
+          {
+            "value": -7.411080413859842,
+            "count": 1
+          },
+          {
+            "value": -6.775035344018704,
+            "count": 1
+          },
+          {
+            "value": -6.328200272094753,
+            "count": 1
+          },
+          {
+            "value": -4.947823288649088,
+            "count": 1
+          },
+          {
+            "value": 13.82021409761152,
+            "count": 1
+          }
+        ],
+        "partial_unexpected_index_list": [
+          387565,
+          502492,
+          513631,
+          513634,
+          513649,
+          513709,
+          513751,
+          513754,
+          514429,
+          516682,
+          538512,
+          538557,
+          585242,
+          585260,
+          638891,
+          694781,
+          695377,
+          697048,
+          698466,
+          708133
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    }
+  ],
+  "suite_name": "br_ecom_expectation",
+  "suite_parameters": {},
+  "statistics": {
+    "evaluated_expectations": 2,
+    "successful_expectations": 0,
+    "unsuccessful_expectations": 2,
+    "success_percent": 0.0
+  },
+  "meta": {
+    "great_expectations_version": "1.5.1",
+    "batch_spec": {
+      "path": "/home/chuhao/dsai_sctp/br_e_commerce/data/olist_geolocation_dataset.csv",
+      "reader_method": "read_csv",
+      "reader_options": {}
+    },
+    "batch_markers": {
+      "ge_load_time": "20250613T072155.990581Z",
+      "pandas_data_fingerprint": "6890de522648268aecb5f5908107d5be"
+    },
+    "active_batch_definition": {
+      "datasource_name": "olist_geolocation_dataset",
+      "data_connector_name": "fluent",
+      "data_asset_name": "olist_geolocation_dataset_files",
+      "batch_identifiers": {
+        "path": "olist_geolocation_dataset.csv"
+      },
+      "batching_regex": "(?P<path>olist_geolocation_dataset.csv$)"
+    },
+    "validation_id": "ea97e1b4-c188-441d-85bb-88d77e81a4b1",
+    "checkpoint_id": null,
+    "run_id": {
+      "run_name": null,
+      "run_time": "2025-06-13T15:21:56.819572+08:00"
+    },
+    "validation_time": "2025-06-13T07:21:56.819572+00:00",
+    "batch_parameters": null
+  },
+  "id": null
+}
