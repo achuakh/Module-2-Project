@@ -60,7 +60,7 @@ def run_GX_tests():
     # Save validation results
     output_folder = "gx_output"
     os.makedirs(output_folder, exist_ok=True)
-    result_path = os.path.join(output_folder, "gx_full_results.txt")
+    result_path = os.path.join(output_folder, "gx_results_geo.txt")
 
     with open(result_path, "w") as f:
         f.write(pprint.pformat(validation_results))
