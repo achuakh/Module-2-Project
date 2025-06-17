@@ -47,7 +47,7 @@ def run_feature_engineering_script2():
         #if prices are needed
         orders_full = pd.merge(
             orders_customers,
-            df_items[['fk_order_sid', 'pk_order_item_id', 'price']],
+            df_items[['fk_order_sid', 'pk_order_item_id', 'price', 'product_category_name_english']],
             how='left',
             left_on='pk_order_sid',
             right_on='fk_order_sid'
