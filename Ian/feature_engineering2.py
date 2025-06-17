@@ -44,15 +44,13 @@ def run_feature_engineering_script2():
             right_on='pk_customer_sid'
         )
 
-        #if prices are needed
-        orders_full = pd.merge(
-            orders_customers,
-            df_items[['fk_order_sid', 'pk_order_item_id', 'price', 'product_category_name_english']],
-            how='left',
-            left_on='pk_order_sid',
-            right_on='fk_order_sid'
-        )
-
+        #group by order instead to avoid dup on merge
+        #using mode since there are orders with multiple product_category_english
+        item_agg = df_items.groupby('fk_order_sid').agg({
+            'price': 'sum',
+            'product_category_name_english': lambda x: x.mode().iloc[0] if not x.mode().empty else None
+        }).reset_index()
+        orders_full = pd.merge(df_orders, item_agg, left_on='pk_order_sid', right_on='fk_order_sid', how='left')
         orders_full['profit'] = orders_full['total_payment'] - orders_full['price']
 
         to_gbq(
