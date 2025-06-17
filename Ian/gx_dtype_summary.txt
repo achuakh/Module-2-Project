@@ -1,0 +1,33 @@
+Great Expectations Full Validation Results
+============================================================
+
+Table: olist_brazillian_ecommerce.DIM_PAYMENTS
+Table: olist_brazillian_ecommerce.DIM_PAYMENTS
+------------------------------------------------------------
+expect_column_values_to_be_of_type on column 'payment_sid' (expected type: string): FAILED
+
+
+Table: olist_brazillian_ecommerce.DIM_REVIEWS
+Table: olist_brazillian_ecommerce.DIM_REVIEWS
+------------------------------------------------------------
+expect_column_values_to_be_of_type on column 'review_sid' (expected type: string): FAILED
+
+
+Table: olist_brazillian_ecommerce.DIM_GEOLOCATION
+Table: olist_brazillian_ecommerce.DIM_GEOLOCATION
+------------------------------------------------------------
+expect_column_values_to_be_of_type on column 'geolocation_zip_code_prefix' (expected type: string): FAILED
+
+
+Table: olist_brazillian_ecommerce.DIM_ORDER_ITEMS
+Table: olist_brazillian_ecommerce.DIM_ORDER_ITEMS
+------------------------------------------------------------
+expect_column_values_to_be_of_type on column 'item_sid' (expected type: string): FAILED
+
+
+Table: olist_brazillian_ecommerce.DIM_DATE
+Table: olist_brazillian_ecommerce.DIM_DATE
+------------------------------------------------------------
+expect_column_values_to_be_of_type on column 'date_sid' (expected type: integer): FAILED
+
+
