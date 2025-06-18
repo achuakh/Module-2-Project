@@ -35,7 +35,7 @@ def run_GX_customers():
     suite = gx.ExpectationSuite(name=suite_name)
 
     schema_dim_customers_expectation = gx.expectations.ExpectColumnToExist(
-        column="customer_sid", column_index=0
+        column="pk_customer_sid", column_index=0
     )
 
     context.suites.add_or_update(suite)
@@ -62,11 +62,11 @@ def run_GX_dtype_summary():
     context = gx.get_context()
     # List of GBQ tables and their expected columns with types
     gbq_tables_with_columns_and_types = {
-        "olist_brazilian_ecommerce_target.FCT_PAYMENTS": {"payment_sid": "string"},
-        "olist_brazilian_ecommerce_target.FCT_REVIEWS": {"review_sid": "string"},
+        "olist_brazilian_ecommerce_target.FCT_PAYMENTS": {"fk_order_sid": "string"},
+        "olist_brazilian_ecommerce_target.FCT_REVIEWS": {"fk_order_sid": "string"},
         "olist_brazilian_ecommerce_target.DIM_GEOLOCATION": {"geolocation_zip_code_prefix": "string"},
-        "olist_brazilian_ecommerce_target.FCT_ORDER_ITEMS": {"item_sid": "string"},
-        "olist_brazilian_ecommerce_target.DIM_DATE": {"date_sid": "integer"},
+        "olist_brazilian_ecommerce_target.FCT_ORDER_ITEMS": {"fk_order_sid": "string"},
+        "olist_brazilian_ecommerce_target.DIM_DATE": {"pk_date_sid": "integer"},
     }
 
     output_folder = "gx_output"
@@ -149,16 +149,16 @@ def run_GX_fct_order_items():
 
     # Add column expectations
     schema_fct_orders_expectation_1 = gx.expectations.ExpectColumnToExist(
-        column="payment_sid", column_index=0
+        column="fk_order_sid", column_index=0
     )
     schema_fct_orders_expectation_2 = gx.expectations.ExpectColumnToExist(
-        column="review_sid", column_index=1
+        column="pk_order_id", column_index=1
     )
     schema_fct_orders_expectation_3 = gx.expectations.ExpectColumnToExist(
-        column="item_sid", column_index=2
+        column="pk_order_item_id", column_index=2
     )
     schema_fct_orders_expectation_4 = gx.expectations.ExpectColumnToExist(
-        column="customer_sid", column_index=3
+        column="fk_shipping_limit_date_sid", column_index=3
     )
 
     # Create a new suite for the fact table schema validation
@@ -223,16 +223,16 @@ def run_GX_fct_orders_delivery():
 
     # Add column expectations
     schema_fct_orders_expectation_1 = gx.expectations.ExpectColumnToExist(
-        column="payment_sid", column_index=0
+        column="pk_order_sid", column_index=0
     )
     schema_fct_orders_expectation_2 = gx.expectations.ExpectColumnToExist(
-        column="review_sid", column_index=1
+        column="fk_customer_sid", column_index=1
     )
     schema_fct_orders_expectation_3 = gx.expectations.ExpectColumnToExist(
-        column="item_sid", column_index=2
+        column="fk_order_purchased_date_sid", column_index=2
     )
     schema_fct_orders_expectation_4 = gx.expectations.ExpectColumnToExist(
-        column="customer_sid", column_index=3
+        column="fk_order_delivered_customer_date_sid", column_index=3
     )
 
     # Create a new suite for the fact table schema validation
