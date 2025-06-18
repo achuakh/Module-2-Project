@@ -1,17 +1,17 @@
 {
-  "success": false,
+  "success": true,
   "results": [
     {
-      "success": false,
+      "success": true,
       "expectation_config": {
         "type": "expect_column_to_exist",
         "kwargs": {
           "batch_id": "olist.dim_customers-olist.dim_customers_asset",
-          "column": "customer_sid",
+          "column": "pk_customer_sid",
           "column_index": 0
         },
         "meta": {},
-        "id": "7f96e4cc-471c-4932-b3c0-c0c2ee485a83"
+        "id": "8ac434b8-c95d-43c6-8f69-4b058a63ce77"
       },
       "result": {},
       "meta": {},
@@ -26,9 +26,9 @@
   "suite_parameters": {},
   "statistics": {
     "evaluated_expectations": 1,
-    "successful_expectations": 0,
-    "unsuccessful_expectations": 1,
-    "success_percent": 0.0
+    "successful_expectations": 1,
+    "unsuccessful_expectations": 0,
+    "success_percent": 100.0
   },
   "meta": {
     "great_expectations_version": "1.5.1",
@@ -36,8 +36,8 @@
       "batch_data": "PandasDataFrame"
     },
     "batch_markers": {
-      "ge_load_time": "20250617T133538.971486Z",
-      "pandas_data_fingerprint": "4d85c977c0686ac246cba5f7d8949419"
+      "ge_load_time": "20250618T153705.141531Z",
+      "pandas_data_fingerprint": "a042d1778257861e20708b00e390f103"
     },
     "active_batch_definition": {
       "datasource_name": "olist.dim_customers",
@@ -47,13 +47,13 @@
         "dataframe": "<DATAFRAME>"
       }
     },
-    "validation_id": "019c612c-e5be-49fb-b0bf-dcc85a7664bd",
+    "validation_id": "bd02ac86-7f93-47b5-95ea-2de8b57220ca",
     "checkpoint_id": null,
     "run_id": {
       "run_name": null,
-      "run_time": "2025-06-17T21:35:39.098195+08:00"
+      "run_time": "2025-06-18T23:37:05.280138+08:00"
     },
-    "validation_time": "2025-06-17T13:35:39.098195+00:00",
+    "validation_time": "2025-06-18T15:37:05.280138+00:00",
     "batch_parameters": {
       "dataframe": "<DATAFRAME>"
     }
