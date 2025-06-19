@@ -1,0 +1,82 @@
+{
+  "success": true,
+  "results": [
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_to_exist",
+        "kwargs": {
+          "batch_id": "olist_brazilian_ecommerce_DS.DS_orders_delivery_data_source-olist_brazilian_ecommerce_DS.DS_orders_delivery_asset",
+          "column": "pk_order_sid",
+          "column_index": 0
+        },
+        "meta": {},
+        "id": "aa6a2fe9-24a5-46d1-98c6-652dd50536bb"
+      },
+      "result": {},
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_to_exist",
+        "kwargs": {
+          "batch_id": "olist_brazilian_ecommerce_DS.DS_orders_delivery_data_source-olist_brazilian_ecommerce_DS.DS_orders_delivery_asset",
+          "column": "fk_customer_sid",
+          "column_index": 1
+        },
+        "meta": {},
+        "id": "e100075b-881c-4d6c-8f18-9a9eb1e047ea"
+      },
+      "result": {},
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    }
+  ],
+  "suite_name": "schema_fct_orders_expectation",
+  "suite_parameters": {},
+  "statistics": {
+    "evaluated_expectations": 2,
+    "successful_expectations": 2,
+    "unsuccessful_expectations": 0,
+    "success_percent": 100.0
+  },
+  "meta": {
+    "great_expectations_version": "1.5.1",
+    "batch_spec": {
+      "batch_data": "PandasDataFrame"
+    },
+    "batch_markers": {
+      "ge_load_time": "20250619T002819.495825Z",
+      "pandas_data_fingerprint": "1b34ebd25aab117defbd7f0fe117d18c"
+    },
+    "active_batch_definition": {
+      "datasource_name": "olist_brazilian_ecommerce_DS.DS_orders_delivery_data_source",
+      "data_connector_name": "fluent",
+      "data_asset_name": "olist_brazilian_ecommerce_DS.DS_orders_delivery_asset",
+      "batch_identifiers": {
+        "dataframe": "<DATAFRAME>"
+      }
+    },
+    "validation_id": "eec8416f-b13c-4975-b94e-138705ea531c",
+    "checkpoint_id": null,
+    "run_id": {
+      "run_name": null,
+      "run_time": "2025-06-19T08:28:19.667531+08:00"
+    },
+    "validation_time": "2025-06-19T00:28:19.667531+00:00",
+    "batch_parameters": {
+      "dataframe": "<DATAFRAME>"
+    }
+  },
+  "id": null
+}
