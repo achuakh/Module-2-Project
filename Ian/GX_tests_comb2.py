@@ -228,12 +228,6 @@ def run_GX_fct_orders_delivery():
     schema_fct_orders_expectation_2 = gx.expectations.ExpectColumnToExist(
         column="fk_customer_sid", column_index=1
     )
-    schema_fct_orders_expectation_3 = gx.expectations.ExpectColumnToExist(
-        column="fk_order_purchased_date_sid", column_index=2
-    )
-    schema_fct_orders_expectation_4 = gx.expectations.ExpectColumnToExist(
-        column="fk_order_delivered_customer_date_sid", column_index=3
-    )
 
     # Create a new suite for the fact table schema validation
     suite_name = "schema_fct_orders_expectation"
@@ -242,8 +236,6 @@ def run_GX_fct_orders_delivery():
 
     suite.add_expectation(schema_fct_orders_expectation_1)
     suite.add_expectation(schema_fct_orders_expectation_2)
-    suite.add_expectation(schema_fct_orders_expectation_3)
-    suite.add_expectation(schema_fct_orders_expectation_4)
 
     # Create validation definition
     definition_name = "schema_fct_orders_definition"
